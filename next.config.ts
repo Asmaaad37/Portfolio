@@ -1,8 +1,8 @@
 import bundleAnalyzer from '@next/bundle-analyzer';
 import type { NextConfig } from 'next';
 
-// GitHub Pages serves this as a project site at /PortfolioSite, not the domain root
-const basePath = process.env.NODE_ENV === 'production' ? '/PortfolioSite' : '';
+// GitHub Pages serves this as a project site at /Portfolio, not the domain root
+const basePath = process.env.NODE_ENV === 'production' ? '/Portfolio' : '';
 
 const nextConfig: NextConfig = {
   output: 'export',
