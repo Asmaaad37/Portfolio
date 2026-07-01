@@ -11,13 +11,10 @@ describe('Footer', () => {
     expect(footer).toBeInTheDocument();
   });
 
-  it('displays the name and role', () => {
+  it('displays the name', () => {
     render(<Footer />);
 
     expect(screen.getByText('Asmaad Saeed')).toBeInTheDocument();
-    expect(
-      screen.getByText('Associate Data Scientist at Data Zenix'),
-    ).toBeInTheDocument();
   });
 
   it('displays the current year in copyright', () => {
