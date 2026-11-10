@@ -1,9 +1,7 @@
 @import 'tailwindcss';
 
-/* ========================================
-   DESIGN SYSTEM ENTRY POINT
-   All styles are organized in modular files
-   ======================================== */
+/* Legacy styles below are removed page by page during the redesign.
+   The spec-sheet styles in ./styles/site/ come last and win. */
 
 /* Design Tokens */
 @import './styles/tokens/colors.css';
@@ -26,9 +24,6 @@
 @import './styles/components/icons.css';
 
 /* Layout */
-@import './styles/layout/header.css';
-@import './styles/layout/navigation.css';
-@import './styles/layout/footer.css';
 @import './styles/layout/page.css';
 
 /* Page-Specific */
@@ -40,5 +35,9 @@
 /* Utilities & Animations */
 @import './styles/utilities.css';
 
-/* Theme Overrides */
-@import './styles/dark-mode.css';
+/* Spec-sheet design system */
+@import './styles/site/tokens.css';
+@import './styles/site/base.css';
+@import './styles/site/glass.css';
+@import './styles/site/controls.css';
+@import './styles/site/shell.css';

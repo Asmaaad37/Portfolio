@@ -6,10 +6,10 @@ import data from '@/data/projects';
 import { createPageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Archive',
+  title: 'Work',
   description:
-    'Portfolio projects by Asmaad Saeed spanning AI engineering, data science, and full-stack development.',
-  path: '/projects/',
+    'Selected work by Asmaad Saeed: LLM and RAG systems, real-time ML services, and the web and mobile apps around them.',
+  path: '/work/',
 });
 
 export default function ProjectsPage() {

@@ -17,6 +17,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  // The writing index is only linked (and listed) once there is a post.
+  const writingIndex: MetadataRoute.Sitemap =
+    posts.length > 0
+      ? [
+          {
+            url: `${SITE_URL}/writing/`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly',
+            priority: 0.8,
+          },
+        ]
+      : [];
+
   return [
     {
       url: SITE_URL,
@@ -37,22 +50,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}/projects/`,
+      url: `${SITE_URL}/work/`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/writing/`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/stats/`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.5,
     },
     {
       url: `${SITE_URL}/contact/`,
@@ -60,6 +61,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
+    ...writingIndex,
     ...postEntries,
   ];
 }
