@@ -218,9 +218,8 @@ export default function ResumePage() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {l.label} ↗
+                        {l.label} ↗{' '}
                         <span className="sr-only">
-                          {' '}
                           for {c.name} (opens in a new tab)
                         </span>
                       </a>

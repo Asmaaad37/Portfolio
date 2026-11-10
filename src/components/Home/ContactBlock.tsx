@@ -87,8 +87,8 @@ export default function ContactBlock({
                 ? 'Copied'
                 : state === 'selected'
                   ? 'Selected'
-                  : 'Copy'}
-              <span className="sr-only"> email address</span>
+                  : 'Copy'}{' '}
+              <span className="sr-only">email address</span>
             </Button>
           </div>
           <ul className="socials">

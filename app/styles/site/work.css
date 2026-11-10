@@ -203,3 +203,18 @@
     margin-top: 0;
   }
 }
+
+/* ---------- contact page and 404 ---------- */
+.page-main.bleed > .contact:first-child {
+  padding-top: 64px;
+  border-top: 0;
+}
+.contact-details {
+  padding-block: 0 120px;
+}
+.not-found {
+  min-height: 60vh;
+}
+.not-found .ctas {
+  margin-top: 36px;
+}

@@ -138,8 +138,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   arrow
                   external
                 >
-                  {link.label}
-                  <span className="sr-only"> (opens in a new tab)</span>
+                  {link.label}{' '}
+                  <span className="sr-only">(opens in a new tab)</span>
                 </ButtonLink>
               ))}
             </div>
