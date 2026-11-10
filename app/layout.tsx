@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Anybody, Martian_Mono, Schibsted_Grotesk } from 'next/font/google';
-import Script from 'next/script';
 
 import CrosshairCursor from '@/components/Site/CrosshairCursor';
 import DotGridBackground from '@/components/Site/DotGridBackground';
@@ -115,10 +114,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Marks JS as available before paint, so no-JS fallbacks never flash */}
-        <Script id="js-flag" strategy="beforeInteractive">
-          {`document.documentElement.classList.add('js')`}
-        </Script>
+        {/* Marks JS as available before first paint, so no-JS fallbacks never flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
       </head>
       <body>
         <a className="skip-link" href="#main">

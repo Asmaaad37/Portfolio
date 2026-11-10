@@ -27,7 +27,6 @@
 @import './styles/layout/page.css';
 
 /* Page-Specific */
-@import './styles/pages/home.css';
 @import './styles/pages/resume.css';
 @import './styles/pages/writing.css';
 @import './styles/pages/content.css';
@@ -41,3 +40,4 @@
 @import './styles/site/glass.css';
 @import './styles/site/controls.css';
 @import './styles/site/shell.css';
+@import './styles/site/home.css';

@@ -1,19 +1,34 @@
 import type { Metadata } from 'next';
 
+import ContactBlock from '@/components/Home/ContactBlock';
+import DarkZone from '@/components/Home/DarkZone';
+import Hero from '@/components/Home/Hero';
+import Marquee from '@/components/Home/Marquee';
+import Numbers from '@/components/Home/Numbers';
+import Statement from '@/components/Home/Statement';
+import Timeline from '@/components/Home/Timeline';
+import WorkGallery from '@/components/Home/WorkGallery';
 import { PersonSchema } from '@/components/Schema';
-import Hero from '@/components/Template/Hero';
 import PageWrapper from '@/components/Template/PageWrapper';
 
 export const metadata: Metadata = {
   description:
-    'AI Engineer & Data Scientist with hands-on experience deploying LLM-integrated systems, REST APIs, and end-to-end ML pipelines. Passionate about building production-grade AI solutions.',
+    'Asmaad Saeed, AI engineer building LLM, RAG and real-time ML systems that hold up in production, plus the web and mobile apps around them.',
 };
 
 export default function HomePage() {
   return (
-    <PageWrapper>
+    <PageWrapper mainClassName="home">
       <PersonSchema />
       <Hero />
+      <Marquee />
+      <Statement id="about" />
+      <DarkZone>
+        <WorkGallery />
+        <Numbers />
+      </DarkZone>
+      <Timeline />
+      <ContactBlock />
     </PageWrapper>
   );
 }

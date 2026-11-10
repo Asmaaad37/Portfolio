@@ -17,13 +17,20 @@ export default function SmoothScroll() {
   useEffect(() => {
     if (reduced) return;
 
-    const lenis = new Lenis({ lerp: 0.1, autoRaf: false, anchors: true });
+    const lenis = new Lenis({
+      lerp: 0.1,
+      autoRaf: false,
+      anchors: { offset: -90 },
+    });
     lenisRef.current = lenis;
     lenis.on('scroll', ScrollTrigger.update);
 
     const tick = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
+
+    // Fonts change line lengths; re-measure pins and triggers once they land.
+    document.fonts?.ready.then(() => ScrollTrigger.refresh());
 
     return () => {
       gsap.ticker.remove(tick);
