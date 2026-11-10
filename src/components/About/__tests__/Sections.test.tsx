@@ -111,10 +111,10 @@ Lead paragraph.
       <AboutContent markdown={aboutMarkdown} />,
     );
 
-    expect(html).toContain('href="#notable-projects"');
-    expect(html).toContain('id="notable-projects"');
-    expect(html).toContain('href="#certifications"');
-    expect(html).toContain('id="certifications"');
+    expect(html).toContain('href="#what-i-build"');
+    expect(html).toContain('id="what-i-build"');
+    expect(html).toContain('href="#get-in-touch"');
+    expect(html).toContain('id="get-in-touch"');
   });
 
   it('supports same-page hash navigation from section links', async () => {
@@ -124,30 +124,30 @@ Lead paragraph.
 
     const nav = screen.getByRole('navigation', { name: 'About sections' });
     const navLink = within(nav).getByRole('link', {
-      name: 'Notable Projects',
+      name: 'What I Build',
     });
 
     navLink.click();
 
     await waitFor(() => {
-      expect(window.location.hash).toBe('#notable-projects');
+      expect(window.location.hash).toBe('#what-i-build');
     });
     expect(document.querySelector(window.location.hash)).toHaveTextContent(
-      'Notable Projects',
+      'What I Build',
     );
 
-    const heading = screen.getByRole('heading', { name: 'Certifications' });
+    const heading = screen.getByRole('heading', { name: 'Get in Touch' });
     const permalink = within(heading).getByRole('link', {
-      name: 'Certifications',
+      name: 'Get in Touch',
     });
 
     permalink.click();
 
     await waitFor(() => {
-      expect(window.location.hash).toBe('#certifications');
+      expect(window.location.hash).toBe('#get-in-touch');
     });
     expect(document.querySelector(window.location.hash)).toHaveTextContent(
-      'Certifications',
+      'Get in Touch',
     );
   });
 });

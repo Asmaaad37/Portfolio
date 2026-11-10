@@ -32,10 +32,8 @@ describe('createHeadingId', () => {
         createHeadingId(title),
       ]),
     ).toEqual([
-      ['Experience Highlights', 'experience-highlights'],
-      ['Technical Skills', 'technical-skills'],
-      ['Notable Projects', 'notable-projects'],
-      ['Certifications', 'certifications'],
+      ['What I Build', 'what-i-build'],
+      ["Where I've Worked", 'where-ive-worked'],
       ['Interests', 'interests'],
       ['Get in Touch', 'get-in-touch'],
     ]);

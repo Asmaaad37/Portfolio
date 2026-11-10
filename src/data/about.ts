@@ -1,70 +1,33 @@
 export const aboutMarkdown = `# Intro
 
-I'm an AI Engineer and Data Scientist with hands-on experience deploying LLM-integrated systems, REST APIs, and end-to-end ML pipelines. I'm passionate about building production-grade AI solutions where reliability matters as much as accuracy.
+I'm Asmaad, an AI Engineer and Data Scientist from Sargodha, Pakistan. I build AI systems that run in production, not just in notebooks: LLM-powered assistants, ML models served behind real APIs, and the data pipelines that feed them.
 
-Currently completing my Bachelor of Computer Science at the University of Sargodha (2022–2026), I've gained practical experience through internships at **Sofnix Pvt. Ltd** and **Data Zenix**, where I designed and deployed conversational AI systems, predictive analytics models, and GCP data pipelines.
+I'm finishing my Bachelor of Computer Science at the University of Sargodha (2022–2026) and I'm looking for full-time roles in **AI Engineering** or **Machine Learning**.
 
-I'm particularly interested in AI Engineering and Machine Learning roles where I can continue building systems that bridge research and production.
+# What I Build
 
-# Experience Highlights
+The work I enjoy most sits where research meets production. A model is only useful once it's reliable, fast enough, and wired into something people actually use, so I care as much about the API, the database schema and the pipeline as I do about accuracy.
 
-## AI Engineering & LLM Systems
+My biggest project so far is **UOS Assistant**, a voice agent that answers inbound calls in Urdu. I led a four-person team to build it, chaining speech-to-text, a RAG pipeline over pgvector, GPT-4o Mini and text-to-speech into one conversation loop.
 
-At **Sofnix Pvt. Ltd** (Jul 2024 – Nov 2024), I improved system efficiency by 20% by designing and deploying ML models for predictive analytics using Python and TensorFlow. I also boosted customer engagement by 15% by building conversational AI systems with LLM integration, handling intent classification, context management, and response generation—all connected via microservices architecture.
+See all of my work on the [Projects](/projects/) page.
 
-## Data Engineering & Analytics
+# Where I've Worked
 
-At **Data Zenix** (Jul 2025 – Aug 2025), I built an end-to-end data pipeline that surfaced key economic trends—including a linear correlation between GDP growth and external debt, and a 40% rising poverty trend. I also achieved a Car Price Prediction MAE of 1.0 using Decision Tree Regression with systematic feature engineering and hyperparameter tuning.
+- **Sofnix Pvt. Ltd**, Islamabad: Junior AI Engineer working on conversational AI and predictive models served to a .NET Core backend.
+- **Data Zenix**, Karachi: Associate Data Scientist building analytics pipelines and prediction models on GCP.
 
-# Technical Skills
-
-**Languages:** Python (advanced), C++, R, JavaScript, PHP
-
-**ML / AI:** TensorFlow, Scikit-learn, XceptionNet (CNN), Decision Trees, Regression modeling
-
-**LLM & AI Engineering:** LLM integration, Conversational AI, Intent classification, REST API deployment
-
-**Data Engineering:** Pandas, NumPy, GCP (BigQuery, Mage), MySQL, MongoDB, Dimensional modeling
-
-**Deployment & Infrastructure:** REST APIs, Microservices (.NET Core), Model serving, Data pipeline design
-
-**Visualization & BI:** Tableau, Interactive dashboards
-
-# Notable Projects
-
-## UOS Assistant — AI Inbound Calling Agent
-Architected and led a four-person team delivering a voice-driven inbound calling agent. Processes calls through a Google STT → FastAPI → RAG pipeline (OpenAI embeddings + PostgreSQL/pgvector) → GPT-4o Mini → Google TTS, enabling natural Urdu-language intent classification and contextually aware responses at production scale.
-
-## Wavr — Real-Time Chat Application
-Deployed a production real-time messaging application on a MERN stack (React, Node.js, Socket.io, MongoDB) with Firebase Authentication for JWT-based identity and Socket.io for sub-second message delivery, achieving zero-polling live presence tracking across concurrent users.
-
-## DeepFake Detection System
-Achieved 95%+ face classification accuracy by fine-tuning XceptionNet (CNN) on augmented training data, reducing training time by 60% using transfer learning.
-
-## Uber Data Analytics Pipeline
-Processed and modeled an Uber-scale trip dataset end-to-end—from raw ingestion to dimensional schema design to orchestrated ETL via Mage, reducing query time on aggregated data by 40%.
-
-# Certifications
-
-- Google Data Analytics Professional Certificate (Coursera)
-- IBM AI Engineer Professional Certificate (Coursera) — supervised/unsupervised learning, deep learning, LLM development, RAG, generative AI agents, computer vision, ML pipelines on Apache Spark
-- Deloitte Australia Data Analytics Simulation (Forage, Feb 2026)
-- World Quant University Applied Data Science (8 end-to-end projects)
-- Data Zenix Data Science Internship Certification
+The details, along with my skills and certifications, are on my [Resume](/resume/).
 
 # Interests
 
-I'm passionate about:
-- Building production ML systems and LLM applications
+- LLM applications and AI agents
 - Data engineering and ETL pipeline design
 - Computer vision and deep learning
 - Cloud platforms (GCP, AWS)
-- Open-source AI/ML projects
-- Continuous learning in AI and ML
+- Open-source AI/ML
 
 # Get in Touch
 
-Based in Sargodha, Pakistan. Feel free to reach out on [LinkedIn](https://www.linkedin.com/in/asmaadsaeed) or [Kaggle](https://www.kaggle.com/asmaadsaeed).
-
-📧 [asmaadsaeed03@gmail.com](mailto:asmaadsaeed03@gmail.com)
+If you're hiring, or working on something where I could help, I'd like to hear from you. Reach me on [LinkedIn](https://www.linkedin.com/in/asmaadsaeed), see my notebooks on [Kaggle](https://www.kaggle.com/asmaadsaeed), or email [asmaadsaeed03@gmail.com](mailto:asmaadsaeed03@gmail.com).
 `;

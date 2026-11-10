@@ -14,22 +14,17 @@ describe('about data', () => {
     expect(aboutMarkdown).toContain('Data Scientist');
   });
 
-  it('contains the experience section', () => {
-    expect(aboutMarkdown).toContain('# Experience Highlights');
+  it('contains the what I build section', () => {
+    expect(aboutMarkdown).toContain('# What I Build');
+    expect(aboutMarkdown).toContain('UOS Assistant');
+    expect(aboutMarkdown).toContain('(/projects/)');
+  });
+
+  it('contains the work section', () => {
+    expect(aboutMarkdown).toContain("# Where I've Worked");
     expect(aboutMarkdown).toContain('Sofnix');
     expect(aboutMarkdown).toContain('Data Zenix');
-  });
-
-  it('contains the notable projects section', () => {
-    expect(aboutMarkdown).toContain('# Notable Projects');
-    expect(aboutMarkdown).toContain('UOS Assistant');
-    expect(aboutMarkdown).toContain('DeepFake Detection System');
-  });
-
-  it('contains the certifications section', () => {
-    expect(aboutMarkdown).toContain('# Certifications');
-    expect(aboutMarkdown).toContain('Google Data Analytics');
-    expect(aboutMarkdown).toContain('IBM AI Engineer');
+    expect(aboutMarkdown).toContain('(/resume/)');
   });
 
   it('contains the interests section', () => {

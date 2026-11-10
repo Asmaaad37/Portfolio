@@ -1,56 +1,58 @@
-# My Personal Portfolio
+# Asmaad Saeed — Portfolio
 
-Built with [Next.js](https://nextjs.org/), [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), and [Tailwind CSS](https://tailwindcss.com/).
+My personal site: **[asmaadsaeed.vercel.app](https://asmaadsaeed.vercel.app)**
 
-## Quick Start
+I'm an AI Engineer and Data Scientist building LLM systems, ML models and data pipelines. The site has my background, projects and resume.
 
-### Development
+## Stack
+
+- [Next.js](https://nextjs.org/) (App Router, static export) with React and TypeScript
+- [Tailwind CSS](https://tailwindcss.com/) plus hand-written CSS in `app/styles/`
+- [Vitest](https://vitest.dev/) and Testing Library for tests
+- [Biome](https://biomejs.dev/) for linting and formatting
+- Hosted on [Vercel](https://vercel.com/)
+
+## Running locally
+
+Requires Node.js 20 or newer.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Visit http://localhost:3000 to view the site locally.
+Then open http://localhost:3000.
 
-Requires Node.js 20+ ([nvm](https://github.com/nvm-sh/nvm) recommended).
-
-## Available Commands
+## Commands
 
 ```bash
-npm run dev          # Start dev server with Turbopack
-npm run build        # Build static export
-npm run lint         # Run Biome linter
-npm run type-check   # Check TypeScript
-npm run format       # Format code
-npm test             # Run test suite
-npm test:watch       # Run tests in watch mode
-npm test:coverage    # Generate coverage report
+npm run dev            # Dev server
+npm run build          # Static build to out/
+npm run lint           # Biome lint
+npm run type-check     # TypeScript check
+npm run format         # Format code
+npm test               # Run tests
+npm run test:watch     # Tests in watch mode
+npm run test:coverage  # Coverage report
 ```
 
-## Project Structure
+## Where the content lives
 
-- **src/components** - React components
-- **src/data** - Content data (about, contact, projects, writing)
-- **app** - Next.js app routes and layouts
-- **app/styles** - CSS variables and component styles
-- **content/writing** - Markdown blog posts
-- **public** - Static assets
+All site content is plain TypeScript, so updating it means editing a file:
 
-## Customization
-
-Update your personal information in these files:
-
-- `src/data/about.ts` - About page content
-- `src/data/contact.ts` - Social links and contact info
-- `src/data/projects.ts` - Portfolio projects
-- `src/data/resume.ts` - Resume content
-- `src/data/stats.ts` - Statistics
-- `package.json` - Site metadata and homepage URL
+| Content           | File                                                                    |
+| ----------------- | ----------------------------------------------------------------------- |
+| About page        | `src/data/about.ts`                                                     |
+| Projects          | `src/data/projects.ts` (images in `public/images/projects/`)            |
+| Resume            | `src/data/resume/` (`work.ts`, `degrees.ts`, `courses.ts`, `skills.ts`) |
+| Contact links     | `src/data/contact.ts`                                                   |
+| Stats             | `src/data/stats/`                                                       |
+| Site URL and name | `src/lib/utils.ts`                                                      |
+| Blog posts        | `content/writing/*.md`                                                  |
 
 ## Deployment
 
-The site is configured to deploy to GitHub Pages. Automatic deployment runs on push to `main`.
+Every push to `main` deploys to Vercel automatically, and pull requests get a preview link.
 
 ## License
 
