@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 
+import { caseStudies } from '@/data/caseStudies';
 import { getAllPosts } from '@/lib/posts';
 import { SITE_URL } from '@/lib/utils';
 
@@ -61,6 +62,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
+    ...caseStudies.map((study) => ({
+      url: `${SITE_URL}/work/${study.slug}/`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
     ...writingIndex,
     ...postEntries,
   ];

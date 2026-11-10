@@ -17,6 +17,13 @@ describe('sitemap', () => {
     );
   });
 
+  it('lists every case study', () => {
+    const urls = sitemap().map((entry) => entry.url);
+
+    expect(urls).toContain(`${SITE_URL}/work/uosbuddy/`);
+    expect(urls).toContain(`${SITE_URL}/work/wavr/`);
+  });
+
   it('leaves out removed and empty sections', () => {
     const urls = sitemap().map((entry) => entry.url);
 

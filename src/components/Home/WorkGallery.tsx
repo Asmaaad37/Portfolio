@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { useRef } from 'react';
 
 import Chip from '@/components/ui/Chip';
+import MoreWorkCard from '@/components/Work/MoreWorkCard';
 import ProjectCard from '@/components/Work/ProjectCard';
-import { caseStudies, moreWork } from '@/data/caseStudies';
+import { caseStudies } from '@/data/caseStudies';
 import { DESKTOP, gsap, MOTION_OK, useGSAP } from '@/lib/motion';
 
 /**
@@ -86,20 +87,7 @@ export default function WorkGallery() {
             total={caseStudies.length}
           />
         ))}
-        <a
-          className="card end"
-          href={moreWork.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-cursor="view"
-        >
-          <div className="row">
-            <span>Everything else</span>
-            <span aria-hidden="true">↗</span>
-          </div>
-          <h3>{moreWork.title}</h3>
-          <p>{moreWork.summary}</p>
-        </a>
+        <MoreWorkCard />
       </div>
     </section>
   );

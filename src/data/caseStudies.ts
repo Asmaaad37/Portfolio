@@ -28,6 +28,9 @@ export interface CaseStudy {
   result: string;
   stack: string[];
   links: CaseStudyLink[];
+  /** How data flows through the system, drawn as the page's figure. Only
+   *  stages the resume names. */
+  pipeline?: string[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -61,6 +64,7 @@ export const caseStudies: CaseStudy[] = [
       'Redis',
     ],
     links: [{ label: 'Live app', href: 'https://uosbuddy.vercel.app/' }],
+    pipeline: ['Question', 'pgvector + full-text', 'Rank fusion', 'Claude'],
   },
   {
     slug: 'salah-together',
@@ -85,6 +89,12 @@ export const caseStudies: CaseStudy[] = [
     links: [
       { label: 'GitHub', href: 'https://github.com/Asmaaad37/salah-together' },
     ],
+    pipeline: [
+      'On-device times',
+      'Log & streaks',
+      'Offline outbox',
+      'Supabase Realtime',
+    ],
   },
   {
     slug: 'uos-assistant',
@@ -107,6 +117,13 @@ export const caseStudies: CaseStudy[] = [
     links: [
       { label: 'GitHub', href: 'https://github.com/Asmaaad37/UOS-ASSISTANT' },
     ],
+    pipeline: [
+      'Google STT',
+      'FastAPI',
+      'RAG · pgvector',
+      'GPT-4o Mini',
+      'Google TTS',
+    ],
   },
   {
     slug: 'fraud-detection-api',
@@ -124,6 +141,7 @@ export const caseStudies: CaseStudy[] = [
     result: 'A full write-up with results is coming soon.',
     stack: ['Kafka', 'Scikit-learn', 'Docker'],
     links: [{ label: 'GitHub', href: GITHUB_URL }],
+    pipeline: ['Kafka stream', 'Isolation Forest', 'Fraud score'],
   },
   {
     slug: 'visual-document-search',
@@ -156,6 +174,7 @@ export const caseStudies: CaseStudy[] = [
         href: 'https://github.com/Asmaaad37/visual-doc-search',
       },
     ],
+    pipeline: ['PDF pages', 'ColQwen2', 'Qdrant MaxSim', 'Gemini 2.0 Flash'],
   },
   {
     slug: 'wavr',
@@ -175,6 +194,7 @@ export const caseStudies: CaseStudy[] = [
       'Sub-second message delivery and zero-polling live presence tracking across concurrent users.',
     stack: ['React', 'Node.js', 'Socket.io', 'MongoDB', 'Firebase'],
     links: [{ label: 'GitHub', href: 'https://github.com/Asmaaad37/wavr' }],
+    pipeline: ['Firebase Auth', 'Socket.io', 'Node.js', 'MongoDB'],
   },
 ];
 
