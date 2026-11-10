@@ -62,7 +62,7 @@ describe('PersonSchema', () => {
     expect(data.sameAs.length).toBeGreaterThan(0);
   });
 
-  it('includes worksFor organization', () => {
+  it('does not claim a current employer', () => {
     const { container } = render(<PersonSchema />);
 
     const script = container.querySelector(
@@ -70,12 +70,11 @@ describe('PersonSchema', () => {
     );
     const data = JSON.parse(script?.innerHTML || '{}');
 
-    expect(data.worksFor).toBeDefined();
-    expect(data.worksFor['@type']).toBe('Organization');
-    expect(data.worksFor.name).toBe('Data Zenix');
+    expect(data.worksFor).toBeUndefined();
+    expect(data.jobTitle).toBe('AI Engineer');
   });
 
-  it('uses current role as job title', () => {
+  it('links LinkedIn and GitHub only', () => {
     const { container } = render(<PersonSchema />);
 
     const script = container.querySelector(
@@ -83,10 +82,13 @@ describe('PersonSchema', () => {
     );
     const data = JSON.parse(script?.innerHTML || '{}');
 
-    expect(data.jobTitle).toBe('Associate Data Scientist');
+    expect(data.sameAs).toEqual([
+      'https://www.linkedin.com/in/asmaadsaeed/',
+      'https://github.com/Asmaaad37',
+    ]);
   });
 
-  it('includes alumniOf schools', () => {
+  it('includes the university as alumniOf', () => {
     const { container } = render(<PersonSchema />);
 
     const script = container.querySelector(
@@ -94,9 +96,7 @@ describe('PersonSchema', () => {
     );
     const data = JSON.parse(script?.innerHTML || '{}');
 
-    expect(data.alumniOf).toBeDefined();
-    expect(Array.isArray(data.alumniOf)).toBe(true);
-    expect(data.alumniOf.length).toBeGreaterThan(0);
-    expect(data.alumniOf[0]['@type']).toBe('CollegeOrUniversity');
+    expect(data.alumniOf['@type']).toBe('CollegeOrUniversity');
+    expect(data.alumniOf.name).toBe('University of Sargodha');
   });
 });

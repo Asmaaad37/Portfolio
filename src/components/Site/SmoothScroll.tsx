@@ -7,6 +7,25 @@ import { useEffect, useRef } from 'react';
 import { useReducedMotion } from '@/hooks/useMediaQuery';
 import { gsap, ScrollTrigger } from '@/lib/motion';
 
+let activeLenis: Lenis | null = null;
+
+/** The running Lenis instance, or null under reduced motion. */
+export function getLenis(): Lenis | null {
+  return activeLenis;
+}
+
+/**
+ * Scroll to an element with the fixed header (and any extra sticky bar)
+ * cleared. Smooth through Lenis when it runs, instant otherwise.
+ */
+export function scrollToElement(el: HTMLElement, extraOffset = 0) {
+  const header = document.querySelector<HTMLElement>('.top');
+  const offset = (header?.offsetHeight ?? 0) + extraOffset + 16;
+  const y = el.getBoundingClientRect().top + window.scrollY - offset;
+  if (activeLenis) activeLenis.scrollTo(y, { duration: 1.2 });
+  else window.scrollTo({ top: y });
+}
+
 /** Lenis inertia scrolling (M14), driven by the GSAP ticker. Off under reduced motion. */
 export default function SmoothScroll() {
   const reduced = useReducedMotion();
@@ -23,6 +42,7 @@ export default function SmoothScroll() {
       anchors: { offset: -90 },
     });
     lenisRef.current = lenis;
+    activeLenis = lenis;
     lenis.on('scroll', ScrollTrigger.update);
 
     const tick = (time: number) => lenis.raf(time * 1000);
@@ -37,6 +57,7 @@ export default function SmoothScroll() {
       gsap.ticker.lagSmoothing(500, 33);
       lenis.destroy();
       lenisRef.current = null;
+      activeLenis = null;
     };
   }, [reduced]);
 

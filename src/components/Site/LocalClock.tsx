@@ -9,8 +9,12 @@ const format = () =>
     timeZone: 'Asia/Karachi',
   }).format(new Date());
 
+interface LocalClockProps {
+  prefix?: string;
+}
+
 /** Local time in Sargodha. Renders a placeholder on the server to avoid a hydration mismatch. */
-export default function LocalClock() {
+export default function LocalClock({ prefix = 'Sargodha' }: LocalClockProps) {
   const [time, setTime] = useState<string | null>(null);
 
   useEffect(() => {
@@ -21,7 +25,8 @@ export default function LocalClock() {
 
   return (
     <span className="clock">
-      Sargodha <time>{time ?? '—:—'}</time> PKT
+      {prefix && `${prefix} `}
+      <time>{time ?? '—:—'}</time> PKT
     </span>
   );
 }

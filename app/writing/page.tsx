@@ -116,10 +116,13 @@ export default function WritingPage() {
         <div className="writing-list">
           {allItems.length === 0 ? (
             <div className="writing-empty">
-              <p className="writing-empty-title">Nothing here yet — but something&apos;s brewing. ☕</p>
+              <p className="writing-empty-title">
+                Nothing here yet — but something&apos;s brewing. ☕
+              </p>
               <p className="writing-empty-sub">
-                I&apos;m collecting thoughts on AI engineering, ML pipelines, and everything in between.
-                Check back soon — first post incoming.
+                I&apos;m collecting thoughts on AI engineering, ML pipelines,
+                and everything in between. Check back soon — first post
+                incoming.
               </p>
             </div>
           ) : (
