@@ -3,14 +3,9 @@
  */
 
 // Site configuration
-export const SITE_URL = 'https://asmaaad37.github.io/Portfolio';
+export const SITE_URL = 'https://asmaadsaeed.vercel.app';
 export const AUTHOR_NAME = 'Asmaad Saeed';
 export const TWITTER_HANDLE = '@AsmaadSaeed';
-
-// GitHub Pages project-site path prefix. next/image and next/link apply this
-// automatically via next.config.ts; raw <img>/<a> tags must prefix it manually.
-export const BASE_PATH =
-  process.env.NODE_ENV === 'production' ? '/Portfolio' : '';
 
 // Image dimension constants
 export const AVATAR_SIZE = {

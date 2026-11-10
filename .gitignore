@@ -49,6 +49,9 @@ build/Release/
 .DS_Store
 Thumbs.db
 
+# Vercel
+.vercel
+
 # Misc
 .grunt/
 .lock-wscript

@@ -1,13 +1,8 @@
 import bundleAnalyzer from '@next/bundle-analyzer';
 import type { NextConfig } from 'next';
 
-// GitHub Pages serves this as a project site at /Portfolio, not the domain root
-const basePath = process.env.NODE_ENV === 'production' ? '/Portfolio' : '';
-
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath,
-  assetPrefix: basePath,
 
   // Allow dev server access from local network (mobile testing, etc.)
   allowedDevOrigins: ['http://192.168.*.*:3000'],

@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import Image from 'next/image';
 
 import type { Project } from '@/data/projects';
-import { BASE_PATH, PROJECT_IMAGE } from '@/lib/utils';
+import { PROJECT_IMAGE } from '@/lib/utils';
 
 interface CellProps {
   data: Project;
@@ -17,7 +17,7 @@ export default function Cell({ data }: CellProps) {
     <>
       <div className="project-card-image">
         <Image
-          src={`${BASE_PATH}${image}`}
+          src={image}
           alt={title}
           width={PROJECT_IMAGE.width}
           height={PROJECT_IMAGE.height}
