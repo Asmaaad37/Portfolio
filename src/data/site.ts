@@ -1,4 +1,4 @@
-/** Contact details and site-wide facts, from the resume (Designs/M. Asmaad Saeed - resume.pdf). */
+/** Contact details and site-wide facts, from the resume (public/resume.pdf). */
 export const EMAIL = 'asmaadsaeed03@gmail.com';
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/asmaadsaeed/';
 export const GITHUB_URL = 'https://github.com/Asmaaad37';

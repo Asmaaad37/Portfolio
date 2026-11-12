@@ -2,7 +2,7 @@ import { GITHUB_URL } from './site';
 
 /**
  * Selected work, in display order. Every figure here is stated in the resume
- * (Designs/M. Asmaad Saeed - resume.pdf). Projects without a confirmed figure
+ * (public/resume.pdf). Projects without a confirmed figure
  * have no `metric`.
  */
 export interface CaseStudyLink {
