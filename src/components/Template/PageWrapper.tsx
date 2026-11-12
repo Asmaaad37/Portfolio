@@ -1,4 +1,4 @@
-import Footer from './Footer';
+import SiteFooter from '@/components/Site/SiteFooter';
 
 interface PageWrapperProps {
   children: React.ReactNode;
@@ -6,22 +6,22 @@ interface PageWrapperProps {
   mainClassName?: string;
 }
 
-/**
- * Server component wrapper for page layout.
- * Provides consistent page structure with optional footer.
- * Relies on Next.js built-in scroll restoration for navigation.
- */
+/** Page frame: the skip-link target and the footer. */
 export default function PageWrapper({
   children,
   hideFooter = false,
   mainClassName,
 }: PageWrapperProps) {
   return (
-    <div className="page-container">
-      <main className={['page-main', mainClassName].filter(Boolean).join(' ')}>
+    <>
+      <main
+        id="main"
+        tabIndex={-1}
+        className={['page-main', mainClassName].filter(Boolean).join(' ')}
+      >
         {children}
       </main>
-      {!hideFooter && <Footer />}
-    </div>
+      {!hideFooter && <SiteFooter />}
+    </>
   );
 }

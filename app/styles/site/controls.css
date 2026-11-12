@@ -1,0 +1,121 @@
+/* Pill buttons, round icon buttons, chips and figure labels */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  height: 56px;
+  padding: 0 26px;
+  border-radius: 999px;
+  border: 1.5px solid var(--fg);
+  background: transparent;
+  color: var(--fg);
+  font: 600 15px/1 var(--f-body);
+  text-decoration: none;
+  cursor: pointer;
+  will-change: transform;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+}
+.btn.solid {
+  background: var(--fg);
+  color: var(--bg);
+}
+.btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+.btn.glass:hover {
+  background: color-mix(in srgb, var(--fg) 10%, var(--bg));
+  border-color: rgba(255, 255, 255, 0.8);
+  color: var(--fg);
+}
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.btn:has(.circ) {
+  padding: 0 9px 0 26px;
+}
+.btn.icon {
+  width: 56px;
+  padding: 0;
+}
+
+/* The round arrow badge inside a pill */
+.circ {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--fg);
+  transition: transform 0.4s var(--ease-out);
+}
+.btn:hover .circ {
+  transform: rotate(-45deg);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--bg);
+  color: var(--muted);
+  font: 500 11px/1 var(--f-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    color 0.7s,
+    border-color 0.7s,
+    background-color 0.7s;
+}
+.chip::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: chip-pulse 1.8s ease-in-out infinite;
+}
+.chip b {
+  color: var(--fg);
+  font-weight: 500;
+}
+@keyframes chip-pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.fig {
+  color: var(--muted);
+  font: 400 11px/1.4 var(--f-mono);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.fig-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip::before {
+    animation: none;
+  }
+}

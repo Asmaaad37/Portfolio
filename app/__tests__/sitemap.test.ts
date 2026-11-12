@@ -11,12 +11,24 @@ describe('sitemap', () => {
       expect.arrayContaining([
         expect.objectContaining({ url: `${SITE_URL}/about/` }),
         expect.objectContaining({ url: `${SITE_URL}/resume/` }),
-        expect.objectContaining({ url: `${SITE_URL}/projects/` }),
-        expect.objectContaining({ url: `${SITE_URL}/writing/` }),
-        expect.objectContaining({ url: `${SITE_URL}/stats/` }),
+        expect.objectContaining({ url: `${SITE_URL}/work/` }),
         expect.objectContaining({ url: `${SITE_URL}/contact/` }),
       ]),
     );
+  });
+
+  it('lists every case study', () => {
+    const urls = sitemap().map((entry) => entry.url);
+
+    expect(urls).toContain(`${SITE_URL}/work/uosbuddy/`);
+    expect(urls).toContain(`${SITE_URL}/work/wavr/`);
+  });
+
+  it('leaves out removed and empty sections', () => {
+    const urls = sitemap().map((entry) => entry.url);
+
+    expect(urls).not.toContain(`${SITE_URL}/stats/`);
+    expect(urls).not.toContain(`${SITE_URL}/projects/`);
   });
 
   it('uses trailing slashes for post routes when posts exist', () => {

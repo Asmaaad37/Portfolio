@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageWrapper from '@/components/Template/PageWrapper';
+import Chip from '@/components/ui/Chip';
 import writing from '@/data/writing';
 import { createPageMetadata } from '@/lib/metadata';
 import { getAllPosts } from '@/lib/posts';
@@ -38,14 +39,14 @@ function WritingItem({ item, showDate = true }: WritingItemProps) {
   const content = (
     <>
       {showDate && item.date && (
-        <time className="writing-date" dateTime={item.date}>
+        <time className="fig" dateTime={item.date}>
           {formatDate(item.date)}
         </time>
       )}
-      <h2 className="writing-title">{item.title}</h2>
-      <p className="writing-description">{item.description}</p>
+      <h2>{item.title}</h2>
+      <p>{item.description}</p>
       {item.isExternal && (
-        <span className="writing-external" aria-hidden="true">
+        <span className="writing-ext" aria-hidden="true">
           ↗
         </span>
       )}
@@ -97,48 +98,39 @@ export default function WritingPage() {
   const undated = allItems.filter((item) => !item.date);
 
   return (
-    <PageWrapper>
-      <article className="writing-page">
-        <header className="writing-header">
-          <div className="writing-header-row">
-            <h1 className="page-title">Writing</h1>
-            <a
-              href="/feed.xml"
-              className="writing-rss-link"
-              title="RSS Feed"
-              aria-label="RSS Feed"
-            >
-              RSS
-            </a>
-          </div>
-        </header>
+    <PageWrapper mainClassName="bleed">
+      <header className="wrap page-head">
+        <Chip label="FIG. 08">Writing</Chip>
+        <h1 className="page-h1">Writing</h1>
+        <p className="page-lede">
+          Notes on AI engineering, ML pipelines and everything in between.{' '}
+          <a href="/feed.xml" className="writing-rss">
+            RSS feed
+          </a>
+        </p>
+      </header>
 
-        <div className="writing-list">
-          {allItems.length === 0 ? (
-            <div className="writing-empty">
-              <p className="writing-empty-title">Nothing here yet — but something&apos;s brewing. ☕</p>
-              <p className="writing-empty-sub">
-                I&apos;m collecting thoughts on AI engineering, ML pipelines, and everything in between.
-                Check back soon — first post incoming.
-              </p>
-            </div>
-          ) : (
-            <>
-              {dated.map((item) => (
-                <WritingItem key={item.url} item={item} />
-              ))}
-              {undated.length > 0 && (
-                <>
-                  <div className="writing-section-label">Guides</div>
-                  {undated.map((item) => (
-                    <WritingItem key={item.url} item={item} showDate={false} />
-                  ))}
-                </>
-              )}
-            </>
-          )}
-        </div>
-      </article>
+      <div className="wrap writing-list">
+        {allItems.length === 0 ? (
+          <p className="writing-empty">
+            Nothing here yet. The first post is on its way.
+          </p>
+        ) : (
+          <>
+            {dated.map((item) => (
+              <WritingItem key={item.url} item={item} />
+            ))}
+            {undated.length > 0 && (
+              <>
+                <p className="r-label">Guides</p>
+                {undated.map((item) => (
+                  <WritingItem key={item.url} item={item} showDate={false} />
+                ))}
+              </>
+            )}
+          </>
+        )}
+      </div>
     </PageWrapper>
   );
 }

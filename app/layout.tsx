@@ -1,33 +1,49 @@
-import type { Metadata } from 'next';
-import { Raleway, Source_Sans_3 } from 'next/font/google';
-import Script from 'next/script';
+import type { Metadata, Viewport } from 'next';
+import { Anybody, Martian_Mono, Schibsted_Grotesk } from 'next/font/google';
 
+import CrosshairCursor from '@/components/Site/CrosshairCursor';
+import DotGridBackground from '@/components/Site/DotGridBackground';
+import GlassFilter from '@/components/Site/GlassFilter';
+import IntroScreen, {
+  INTRO_CSS,
+  INTRO_SCRIPT,
+} from '@/components/Site/IntroScreen';
+import ScrollProgress from '@/components/Site/ScrollProgress';
+import SiteHeader from '@/components/Site/SiteHeader';
+import SmoothScroll from '@/components/Site/SmoothScroll';
 import GoogleAnalytics from '@/components/Template/GoogleAnalytics';
-import Navigation from '@/components/Template/Navigation';
-import ScrollToTop from '@/components/Template/ScrollToTop';
 import { AUTHOR_NAME, SITE_URL, TWITTER_HANDLE } from '@/lib/utils';
 import './tailwind.css';
 
-const sourceSans = Source_Sans_3({
-  weight: ['400', '700'],
+// Display face; the width axis drives the stretching hero name (M15).
+const anybody = Anybody({
   subsets: ['latin'],
-  variable: '--font-source-sans',
+  axes: ['wdth'],
+  variable: '--font-anybody',
   display: 'swap',
-  preload: true,
-  adjustFontFallback: true,
 });
 
-const raleway = Raleway({
-  weight: ['400', '800'],
+const schibsted = Schibsted_Grotesk({
   subsets: ['latin'],
-  variable: '--font-raleway',
+  variable: '--font-schibsted',
   display: 'swap',
-  preload: true,
-  adjustFontFallback: true,
+});
+
+const martian = Martian_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-martian',
+  display: 'swap',
 });
 
 const siteDescription =
-  'AI Engineer & Data Scientist with hands-on experience deploying LLM-integrated systems, REST APIs, and end-to-end ML pipelines. Passionate about building production-grade AI solutions.';
+  'AI Engineer and full-stack developer shipping LLM and RAG pipelines, real-time ML services, and the web and mobile apps around them.';
+
+export const viewport: Viewport = {
+  themeColor: '#EDECE7',
+  colorScheme: 'light',
+  viewportFit: 'cover',
+};
 
 export const metadata: Metadata = {
   title: {
@@ -38,12 +54,12 @@ export const metadata: Metadata = {
   keywords: [
     AUTHOR_NAME,
     'AI Engineer',
-    'Data Scientist',
-    'LLM integration',
-    'machine learning',
-    'data engineering',
-    'TensorFlow',
-    'GCP',
+    'ML Engineer',
+    'full-stack developer',
+    'LLM',
+    'RAG',
+    'FastAPI',
+    'Next.js',
     'Python',
   ],
   authors: [{ name: AUTHOR_NAME }],
@@ -97,21 +113,27 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sourceSans.variable} ${raleway.variable}`}
+      className={`${anybody.variable} ${schibsted.variable} ${martian.variable}`}
       suppressHydrationWarning
     >
       <head>
-        {/* CSP-safe theme initialization - prevents flash on load */}
-        <Script id="theme-init" strategy="beforeInteractive">
-          {`(function(){try{var t=window.localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark')}else{document.documentElement.setAttribute('data-theme','light')}}catch(e){}})();`}
-        </Script>
+        {/* Before first paint: sets the `js` flag and decides whether the
+            first-load intro shows (once per tab session). */}
+        <script dangerouslySetInnerHTML={{ __html: INTRO_SCRIPT }} />
+        <style dangerouslySetInnerHTML={{ __html: INTRO_CSS }} />
       </head>
       <body>
-        <ScrollToTop />
-        <div className="site-wrapper">
-          <Navigation />
-          {children}
-        </div>
+        <IntroScreen />
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <GlassFilter />
+        <DotGridBackground />
+        <ScrollProgress />
+        <SmoothScroll />
+        <SiteHeader />
+        {children}
+        <CrosshairCursor />
         <GoogleAnalytics />
       </body>
     </html>

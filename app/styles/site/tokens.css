@@ -1,0 +1,49 @@
+/* Spec-sheet design tokens, copied from Designs/Motion-lab.html :root */
+:root {
+  --paper: #edece7;
+  --paper-2: #e2e1da;
+  --ink: #121212;
+  --blue: #1e2bd1;
+  --blue-2: #2a38e2;
+  --signal: #ffe45c;
+  --muted-l: #57564f;
+  --muted-b: #cdd1ff;
+
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --muted: var(--muted-l);
+  --card: var(--paper-2);
+  --line: rgba(18, 18, 18, 0.18);
+  --accent: var(--blue);
+
+  --f-display: var(--font-anybody), 'Arial Narrow', system-ui, sans-serif;
+  --f-body: var(--font-schibsted), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: var(--font-martian), ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --gut-l: max(16px, env(safe-area-inset-left, 0px));
+  --gut-r: max(16px, env(safe-area-inset-right, 0px));
+  --wrap: 1280px;
+  --header-h: 84px;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  color-scheme: light;
+}
+
+/* The work section's blue field. body.is-dark is toggled when a .dark-zone
+   reaches the middle of the screen (M08, instant under reduced motion).
+   Without JS the zone carries the values itself. */
+body.is-dark,
+html:not(.js) .dark-zone {
+  --bg: var(--blue);
+  --fg: #f4f4ef;
+  --muted: var(--muted-b);
+  --card: var(--blue-2);
+  --line: rgba(244, 244, 239, 0.26);
+  --accent: var(--signal);
+}
+
+@media (max-width: 759px) {
+  :root {
+    --header-h: 128px;
+  }
+}

@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 
+import { caseStudies } from '@/data/caseStudies';
 import { getAllPosts } from '@/lib/posts';
 import { SITE_URL } from '@/lib/utils';
 
@@ -16,6 +17,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly',
     priority: 0.6,
   }));
+
+  // The writing index is only linked (and listed) once there is a post.
+  const writingIndex: MetadataRoute.Sitemap =
+    posts.length > 0
+      ? [
+          {
+            url: `${SITE_URL}/writing/`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly',
+            priority: 0.8,
+          },
+        ]
+      : [];
 
   return [
     {
@@ -37,22 +51,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}/projects/`,
+      url: `${SITE_URL}/work/`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/writing/`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/stats/`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.5,
     },
     {
       url: `${SITE_URL}/contact/`,
@@ -60,6 +62,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
+    ...caseStudies.map((study) => ({
+      url: `${SITE_URL}/work/${study.slug}/`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+    ...writingIndex,
     ...postEntries,
   ];
 }

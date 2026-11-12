@@ -2,12 +2,13 @@
 
 My personal site: **[asmaadsaeed.vercel.app](https://asmaadsaeed.vercel.app)**
 
-I'm an AI Engineer and Data Scientist building LLM systems, ML models and data pipelines. The site has my background, projects and resume.
+I'm an AI engineer and full-stack developer building LLM, RAG and real-time ML systems. The site has my work, case studies, background and resume.
 
 ## Stack
 
 - [Next.js](https://nextjs.org/) (App Router, static export) with React and TypeScript
-- [Tailwind CSS](https://tailwindcss.com/) plus hand-written CSS in `app/styles/`
+- Hand-written CSS in `app/styles/site/` (Tailwind for the base reset)
+- [GSAP](https://gsap.com/) with ScrollTrigger and [Lenis](https://lenis.darkroom.engineering/) for motion
 - [Vitest](https://vitest.dev/) and Testing Library for tests
 - [Biome](https://biomejs.dev/) for linting and formatting
 - Hosted on [Vercel](https://vercel.com/)
@@ -40,15 +41,15 @@ npm run test:coverage  # Coverage report
 
 All site content is plain TypeScript, so updating it means editing a file:
 
-| Content           | File                                                                    |
-| ----------------- | ----------------------------------------------------------------------- |
-| About page        | `src/data/about.ts`                                                     |
-| Projects          | `src/data/projects.ts` (images in `public/images/projects/`)            |
-| Resume            | `src/data/resume/` (`work.ts`, `degrees.ts`, `courses.ts`, `skills.ts`) |
-| Contact links     | `src/data/contact.ts`                                                   |
-| Stats             | `src/data/stats/`                                                       |
-| Site URL and name | `src/lib/utils.ts`                                                      |
-| Blog posts        | `content/writing/*.md`                                                  |
+| Content                    | File                                               |
+| -------------------------- | -------------------------------------------------- |
+| Projects and case studies  | `src/data/caseStudies.ts`                          |
+| Resume                     | `src/data/resume.ts` (matches `public/resume.pdf`) |
+| About page                 | `src/data/about.ts`                                |
+| Home page copy and figures | `src/data/home.ts`, `src/data/timeline.ts`         |
+| Email, LinkedIn, GitHub    | `src/data/site.ts`                                 |
+| Site URL and name          | `src/lib/utils.ts`                                 |
+| Blog posts                 | `content/writing/*.md`                             |
 
 ## Deployment
 

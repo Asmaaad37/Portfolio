@@ -17,14 +17,6 @@ const nextConfig: NextConfig = {
   turbopack: {
     resolveExtensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },
-
-  // Experimental features
-  experimental: {
-    optimizePackageImports: [
-      '@fortawesome/react-fontawesome',
-      '@fortawesome/fontawesome-svg-core',
-    ],
-  },
 };
 
 // Bundle analyzer for production build analysis

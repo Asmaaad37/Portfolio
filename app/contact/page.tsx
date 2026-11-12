@@ -1,37 +1,47 @@
 import type { Metadata } from 'next';
 
-import ContactIcons from '@/components/Contact/ContactIcons';
-import EmailLink from '@/components/Contact/EmailLink';
-
+import ContactBlock from '@/components/Home/ContactBlock';
+import LocalClock from '@/components/Site/LocalClock';
 import PageWrapper from '@/components/Template/PageWrapper';
+import { now } from '@/data/about';
+import { LOCATION } from '@/data/site';
 import { createPageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Contact',
-  description: 'Contact Asmaad Saeed via email at asmaadsaeed03@gmail.com',
+  description:
+    'Get in touch with Asmaad Saeed: email asmaadsaeed03@gmail.com, or find him on LinkedIn and GitHub.',
   path: '/contact/',
 });
 
+const openTo = now.find((row) => row.label === 'Open to')?.value;
+
 export default function ContactPage() {
   return (
-    <PageWrapper>
-      <section className="contact-page">
-        <header className="contact-header">
-          <h1 className="page-title">Get in Touch</h1>
-        </header>
-
-        <div className="contact-content">
-          <div className="contact-email-block">
-            <EmailLink />
-            <p className="contact-hint">Usually respond within 24 hours</p>
+    <PageWrapper mainClassName="bleed">
+      <ContactBlock id="contact" label="FIG. 06" asPageTitle />
+      <section className="wrap now contact-details" aria-label="Details">
+        <dl className="now-grid">
+          {openTo && (
+            <div>
+              <dt>Open to</dt>
+              <dd>{openTo}</dd>
+            </div>
+          )}
+          <div>
+            <dt>Based in</dt>
+            <dd>
+              {LOCATION.city}
+              <span className="fig now-coords">
+                {LOCATION.coords} · <LocalClock prefix="" />
+              </span>
+            </dd>
           </div>
-
-          <div className="contact-divider">
-            <span>or find me on</span>
+          <div>
+            <dt>Response time</dt>
+            <dd>Within a day</dd>
           </div>
-
-          <ContactIcons />
-        </div>
+        </dl>
       </section>
     </PageWrapper>
   );

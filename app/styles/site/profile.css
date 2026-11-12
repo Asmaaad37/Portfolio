@@ -1,0 +1,291 @@
+/* About and Resume pages */
+
+.section-label {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 0 0 24px;
+  font: 700 clamp(28px, 3.4vw, 44px) / 1 var(--f-display);
+  font-stretch: 85%;
+  letter-spacing: -0.03em;
+}
+
+/* ---------- about ---------- */
+.about-intro {
+  max-width: 58ch;
+  margin-top: 28px;
+}
+.about-intro p {
+  margin: 0 0 16px;
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.5;
+}
+
+.now {
+  padding-block: 24px 40px;
+}
+.now-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+.now-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 24px 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.now-grid dt {
+  color: var(--muted);
+  font: 500 11px/1 var(--f-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.now-grid dd {
+  margin: 0;
+  font: 600 19px/1.35 var(--f-display);
+}
+.now-grid dd a {
+  color: var(--accent);
+  text-underline-offset: 4px;
+}
+.now-coords {
+  display: block;
+  margin-top: 6px;
+}
+
+.beyond {
+  padding-block: 40px 120px;
+}
+.beyond .ctas {
+  margin-top: 40px;
+}
+
+/* ---------- resume ---------- */
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-top: 32px;
+}
+.resume-actions .fig {
+  margin: 0;
+  font-size: 12px;
+}
+
+.resume-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, 3fr) minmax(0, 9fr);
+  gap: 40px;
+  align-items: start;
+  padding-bottom: 120px;
+}
+
+.resume-index {
+  position: sticky;
+  top: calc(var(--header-h) + 16px);
+  padding: 10px;
+  border-radius: 20px;
+}
+.resume-index ol {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.resume-index a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.resume-index a:hover {
+  background: color-mix(in srgb, var(--fg) 10%, transparent);
+}
+.resume-index a[aria-current] {
+  background: var(--fg);
+  color: var(--bg);
+}
+.resume-index a[aria-current] .fig {
+  color: inherit;
+}
+
+.r-sec {
+  padding-block: 8px 40px;
+  border-top: 1px solid var(--line);
+}
+.r-sec + .r-sec {
+  padding-top: 32px;
+}
+.r-sec h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 24px 0 24px;
+  font: 700 clamp(28px, 3vw, 40px) / 1 var(--f-display);
+  font-stretch: 85%;
+  letter-spacing: -0.03em;
+}
+.r-sec h2:focus {
+  outline: none;
+}
+.r-sec h2:focus-visible {
+  outline: 2px solid var(--accent);
+}
+.r-summary {
+  max-width: 64ch;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.r-item + .r-item {
+  margin-top: 32px;
+}
+.r-item-head h3 {
+  margin: 0 0 4px;
+  font: 700 clamp(20px, 2vw, 26px) / 1.15 var(--f-display);
+  letter-spacing: -0.015em;
+}
+.r-item-head p {
+  margin: 0 0 4px;
+}
+.r-item-head a {
+  text-underline-offset: 3px;
+}
+.r-item > ul:not(.tags):not(.r-links),
+.r-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 68ch;
+  margin: 14px 0 0;
+  padding-left: 1.1em;
+  line-height: 1.6;
+}
+.r-item li::marker,
+.r-list li::marker {
+  color: var(--accent);
+}
+.r-item > p:not(.r-label) {
+  max-width: 68ch;
+  margin: 10px 0 0;
+}
+.r-label {
+  margin: 16px 0 8px;
+  color: var(--muted);
+  font: 500 11px var(--f-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.r-skills {
+  margin: 0;
+}
+.r-skills > div {
+  display: grid;
+  grid-template-columns: minmax(150px, 3fr) minmax(0, 7fr);
+  gap: 6px 24px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.r-skills > div:first-child {
+  border-top: 1px solid var(--line);
+}
+.r-skills dt {
+  font-weight: 600;
+}
+.r-skills dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.r-projects {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.r-projects a {
+  display: grid;
+  grid-template-columns: minmax(150px, 3fr) minmax(0, 7fr);
+  gap: 4px 24px;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.r-projects a:hover strong {
+  color: var(--accent);
+}
+.r-projects strong {
+  font: 700 19px/1.2 var(--f-display);
+}
+.r-projects .fig {
+  grid-column: 2;
+}
+
+.r-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.r-links a {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13px;
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+.r-links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 759px) {
+  .resume-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  /* The index becomes a sticky, horizontally scrollable bar. */
+  .resume-index {
+    top: calc(var(--header-h) + 4px);
+    z-index: 20;
+    padding: 6px;
+    border-radius: 999px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .resume-index ol {
+    flex-direction: row;
+    width: max-content;
+  }
+  .resume-index a {
+    padding: 9px 12px;
+    white-space: nowrap;
+  }
+  .r-skills > div,
+  .r-projects a {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .r-projects .fig {
+    grid-column: 1;
+  }
+}
