@@ -604,12 +604,15 @@ html.intro-on:not(.intro-done) .wave-box {
   position: absolute;
   inset: 0;
   color: var(--accent);
-  clip-path: inset(0 100% 0 0);
+  /* The tight line-height lets ascenders and the full stop spill outside
+     the box, so the clip reaches past every edge (negative insets) or those
+     parts would stay black. */
+  clip-path: inset(-30% 100% -30% -10%);
   transition: clip-path 0.7s cubic-bezier(0.7, 0, 0.2, 1);
 }
 .talk:hover::after,
 .talk:focus-visible::after {
-  clip-path: inset(0 0 0 0);
+  clip-path: inset(-30% -10% -30% -10%);
 }
 .talk-sub {
   margin: 18px 0 0;
