@@ -55,6 +55,8 @@ Many of these have tests in `src/data/__tests__/` that pin content facts (order,
 
 **Components** — `src/components/Site/` is the site chrome mounted in `app/layout.tsx`: header and glass nav, dot-grid canvas, crosshair cursor, Lenis smooth scroll, progress bar, the shared SVG refraction filter. `Home/` holds the home sections, some reused elsewhere (`Statement` and `Timeline` on About, `ContactBlock` on Contact, `DarkZone` on Work). `ui/` has buttons, chips and inline SVG icons (no icon font). `Template/PageWrapper` provides `<main id="main">` (the skip-link target) and the footer.
 
+**First-load intro** — `src/components/Site/IntroScreen.tsx` ("LOADING" fill + signature). Its CSS and script are inlined in `<head>` by `app/layout.tsx` so it paints before any bundle. The script (which also sets the `js` class) shows it once per tab session via `sessionStorage`, for 1–3 s, by adding `intro-on` then `intro-done` to `<html>`. Without JavaScript it never appears. While it's up, the hero's CSS intro animations are paused (`home.css`) and play as it lifts.
+
 **Motion** — GSAP + ScrollTrigger via `useGSAP` (imported from `src/lib/motion.ts`, which registers the plugins and exports the media queries). Every effect follows the same rules:
 
 - Wrap it in `gsap.matchMedia()` with `MOTION_OK` (and `DESKTOP` / `FINE_POINTER` where it applies) and return `mm.revert()`, so it does nothing under reduced motion and cleans up on unmount and route change.

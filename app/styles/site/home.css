@@ -65,6 +65,12 @@
     animation-delay: 0.65s;
   }
 }
+/* Hold the hero intro under the first-load screen; it plays as that lifts. */
+html.intro-on:not(.intro-done) .hero-name .ch,
+html.intro-on:not(.intro-done) .hero-row > *,
+html.intro-on:not(.intro-done) .wave-box {
+  animation-play-state: paused;
+}
 @keyframes hero-rise {
   from {
     transform: translateY(115%) rotate(8deg);

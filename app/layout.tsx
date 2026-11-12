@@ -4,6 +4,10 @@ import { Anybody, Martian_Mono, Schibsted_Grotesk } from 'next/font/google';
 import CrosshairCursor from '@/components/Site/CrosshairCursor';
 import DotGridBackground from '@/components/Site/DotGridBackground';
 import GlassFilter from '@/components/Site/GlassFilter';
+import IntroScreen, {
+  INTRO_CSS,
+  INTRO_SCRIPT,
+} from '@/components/Site/IntroScreen';
 import ScrollProgress from '@/components/Site/ScrollProgress';
 import SiteHeader from '@/components/Site/SiteHeader';
 import SmoothScroll from '@/components/Site/SmoothScroll';
@@ -113,14 +117,13 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Marks JS as available before first paint, so no-JS fallbacks never flash */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js')",
-          }}
-        />
+        {/* Before first paint: sets the `js` flag and decides whether the
+            first-load intro shows (once per tab session). */}
+        <script dangerouslySetInnerHTML={{ __html: INTRO_SCRIPT }} />
+        <style dangerouslySetInnerHTML={{ __html: INTRO_CSS }} />
       </head>
       <body>
+        <IntroScreen />
         <a className="skip-link" href="#main">
           Skip to content
         </a>
