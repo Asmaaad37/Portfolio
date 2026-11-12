@@ -305,8 +305,29 @@
   padding-right: var(--gut-r);
 }
 @media (min-width: 760px) and (prefers-reduced-motion: no-preference) {
-  .htrack {
+  /* Pinned: the section is exactly one screen tall below the fixed header,
+     and the cards take whatever height is left, so they are never cut off. */
+  .work {
     display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100vh;
+    padding-block: calc(var(--header-h) + 8px) 32px;
+  }
+  .work-head {
+    flex: none;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: clamp(16px, 3vh, 44px);
+  }
+  .work-head h2 {
+    font-size: clamp(40px, min(7vw, 11vh), 112px);
+  }
+  .htrack {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    align-items: stretch;
     width: max-content;
     max-width: none;
     margin: 0;
@@ -315,7 +336,19 @@
   .htrack .card {
     flex: none;
     width: clamp(300px, 32vw, 430px);
-    height: clamp(420px, 60vh, 540px);
+    height: auto;
+    max-height: 540px;
+    min-height: 0;
+    gap: clamp(8px, 1.4vh, 14px);
+    padding: clamp(20px, 3vh, 28px);
+  }
+  .htrack .card .metric {
+    font-size: clamp(48px, min(7vw, 11vh), 104px);
+  }
+}
+@media (min-width: 760px) and (max-height: 640px) and (prefers-reduced-motion: no-preference) {
+  .htrack .card p {
+    display: none;
   }
 }
 
