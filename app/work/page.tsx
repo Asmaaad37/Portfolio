@@ -30,7 +30,10 @@ export default function WorkPage() {
         </p>
       </header>
       <DarkZone>
-        <section className="work-index" aria-label="Case studies">
+        <section className="work-index" aria-labelledby="case-studies-title">
+          <h2 id="case-studies-title" className="sr-only">
+            Case studies
+          </h2>
           <div className="wrap work-grid">
             {caseStudies.map((study, i) => (
               <ProjectCard

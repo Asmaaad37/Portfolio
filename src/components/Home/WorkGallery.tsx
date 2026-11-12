@@ -47,7 +47,6 @@ export default function WorkGallery() {
         } else {
           gsap.from('.card', {
             y: 50,
-            autoAlpha: 0.2,
             stagger: 0.08,
             duration: 0.8,
             ease: 'power3.out',

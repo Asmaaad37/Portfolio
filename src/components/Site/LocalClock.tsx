@@ -11,10 +11,14 @@ const format = () =>
 
 interface LocalClockProps {
   prefix?: string;
+  className?: string;
 }
 
 /** Local time in Sargodha. Renders a placeholder on the server to avoid a hydration mismatch. */
-export default function LocalClock({ prefix = 'Sargodha' }: LocalClockProps) {
+export default function LocalClock({
+  prefix = 'Sargodha',
+  className = 'clock',
+}: LocalClockProps) {
   const [time, setTime] = useState<string | null>(null);
 
   useEffect(() => {
@@ -24,7 +28,7 @@ export default function LocalClock({ prefix = 'Sargodha' }: LocalClockProps) {
   }, []);
 
   return (
-    <span className="clock">
+    <span className={className}>
       {prefix && `${prefix} `}
       <time>{time ?? '—:—'}</time> PKT
     </span>

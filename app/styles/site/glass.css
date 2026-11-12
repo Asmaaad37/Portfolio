@@ -4,7 +4,9 @@
   position: relative;
   isolation: isolate;
   color: var(--fg);
-  background: rgba(255, 255, 255, 0.16);
+  /* Tinted with the page colour so text keeps 4.5:1 whatever scrolls
+     underneath (the prototype's 16% white let big text wash it out). */
+  background: rgba(237, 236, 231, 0.75);
   -webkit-backdrop-filter: blur(10px) saturate(185%) brightness(1.06);
   backdrop-filter: blur(10px) saturate(185%) brightness(1.06);
   border: 1px solid rgba(255, 255, 255, 0.55);
@@ -26,7 +28,7 @@
   z-index: -1;
   background: radial-gradient(
     120px circle at var(--gx, 30%) var(--gy, 0%),
-    rgba(255, 255, 255, 0.65),
+    var(--glint, rgba(255, 255, 255, 0.65)),
     rgba(255, 255, 255, 0) 60%
   );
 }
@@ -37,7 +39,11 @@
   inset: 1px;
   border-radius: inherit;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 45%);
+  background: linear-gradient(
+    180deg,
+    var(--sheen, rgba(255, 255, 255, 0.35)),
+    rgba(255, 255, 255, 0) 45%
+  );
 }
 
 html.lg-refract .glass {
@@ -45,10 +51,18 @@ html.lg-refract .glass {
   backdrop-filter: url(#lg-distort) blur(3px) saturate(190%) brightness(1.06);
 }
 
+html:not(.glass-live) .hero .glass {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
 body.is-dark .glass,
 html:not(.js) .dark-zone .glass {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(30, 43, 209, 0.88);
   border-color: rgba(255, 255, 255, 0.4);
+  /* Light text here: keep the highlight faint so it never washes it out. */
+  --glint: rgba(255, 255, 255, 0.14);
+  --sheen: rgba(255, 255, 255, 0.08);
 }
 
 /* No backdrop-filter at all: use an opaque-enough tint so text keeps contrast */

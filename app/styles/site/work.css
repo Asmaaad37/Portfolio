@@ -218,3 +218,52 @@
 .not-found .ctas {
   margin-top: 36px;
 }
+
+/* ---------- writing ---------- */
+.writing-rss {
+  white-space: nowrap;
+  text-underline-offset: 4px;
+}
+.writing-list {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 120px;
+}
+.writing-empty {
+  margin: 0;
+  padding-block: 32px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font: 14px var(--f-mono);
+}
+.writing-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 24px 32px 24px 0;
+  border-top: 1px solid var(--line);
+  text-decoration: none;
+}
+.writing-item:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.writing-item h2 {
+  margin: 0;
+  font: 700 clamp(22px, 2.4vw, 30px) / 1.15 var(--f-display);
+  letter-spacing: -0.02em;
+  transition: color 0.2s;
+}
+.writing-item:hover h2 {
+  color: var(--accent);
+}
+.writing-item p {
+  max-width: 64ch;
+  margin: 0;
+  color: var(--muted);
+}
+.writing-ext {
+  position: absolute;
+  right: 0;
+  top: 24px;
+}

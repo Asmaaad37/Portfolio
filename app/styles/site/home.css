@@ -9,6 +9,8 @@
 .hero {
   position: relative;
   padding-block: 140px 40px;
+  /* The glows bleed past the edges; clip so they never widen the page. */
+  overflow-x: clip;
 }
 .hero-top {
   display: flex;
@@ -68,10 +70,11 @@
     transform: translateY(115%) rotate(8deg);
   }
 }
+/* Slide only, no fade: text is visible (and counts as painted for LCP and
+   contrast checks) from the first frame. */
 @keyframes hero-fade {
   from {
     transform: translateY(30px);
-    opacity: 0;
   }
 }
 
@@ -525,7 +528,7 @@
   padding: 5px 8px;
   border-radius: 2px;
   background: var(--accent);
-  color: #fff;
+  color: var(--bg);
   font: 500 11px/1 var(--f-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -631,6 +634,11 @@
   .hero {
     padding-block: 150px 30px;
   }
+  /* Stack email and Copy so the row never reflows when the mono font lands. */
+  .email {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .tl-item {
     grid-template-columns: minmax(0, 1fr);
     gap: 6px;
@@ -642,7 +650,7 @@
 
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .hero-glow i,
+  .hero-glow i:nth-child(n),
   .scroll-hint i::after {
     animation: none;
   }

@@ -25,7 +25,6 @@ export default function ProjectCard({ study, index, total }: ProjectCardProps) {
       href={`/work/${study.slug}`}
       className="card"
       data-cursor="view"
-      aria-label={`${study.title}: ${study.tagline}. Read the case study`}
     >
       <div className="row">
         <span>{study.category}</span>

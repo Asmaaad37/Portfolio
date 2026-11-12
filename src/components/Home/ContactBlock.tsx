@@ -34,7 +34,6 @@ export default function ContactBlock({
       mm.add(MOTION_OK, () => {
         gsap.from('.talk', {
           yPercent: 30,
-          autoAlpha: 0.2,
           duration: 1.1,
           ease: 'expo.out',
           scrollTrigger: { trigger: rootRef.current, start: 'top 75%' },

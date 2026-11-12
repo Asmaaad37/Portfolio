@@ -13,13 +13,16 @@ export default function SiteHeader() {
   return (
     <header className="top">
       <div className="wrap top-inner">
-        <Link href="/" className="logo" aria-label="Asmaad Saeed, home">
+        <Link href="/" className="logo glass" aria-label="Asmaad Saeed, home">
           asmaad<i>/</i>
         </Link>
         <NavLinks routes={routes} />
         <div className="top-meta">
-          <LocalClock />
-          <span className="avail glass">Open to roles</span>
+          <LocalClock className="clock glass" />
+          <span className="avail glass">
+            <span className="avail-dot" aria-hidden="true" />
+            Open to roles
+          </span>
         </div>
       </div>
     </header>

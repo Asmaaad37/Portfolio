@@ -30,7 +30,6 @@ const martian = Martian_Mono({
   weight: ['400', '500'],
   variable: '--font-martian',
   display: 'swap',
-  preload: false,
 });
 
 const siteDescription =

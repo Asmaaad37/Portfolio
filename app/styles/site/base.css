@@ -21,14 +21,17 @@ body {
     color 0.7s ease;
 }
 
-/* Legacy grain and gradient overlays */
-body::before,
-body::after {
-  content: none;
-}
-
 a {
   color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Preflight removes list markers; content lists get them back. */
+.spec ul:not(.tags),
+.r-list,
+.r-item > ul:not(.tags):not(.r-links) {
+  list-style: disc;
 }
 
 :focus-visible {

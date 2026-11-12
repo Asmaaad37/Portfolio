@@ -41,7 +41,6 @@ export default function Timeline({
         for (const item of gsap.utils.toArray<HTMLElement>('.tl-item')) {
           gsap.from(item, {
             x: -30,
-            autoAlpha: 0.15,
             duration: 0.9,
             ease: 'power3.out',
             scrollTrigger: { trigger: item, start: 'top 82%' },

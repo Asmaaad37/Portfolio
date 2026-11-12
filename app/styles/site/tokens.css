@@ -26,24 +26,6 @@
   --header-h: 84px;
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 
-  /* Legacy aliases so pages not yet rebuilt pick up the new palette.
-     Remove with the last legacy stylesheet. */
-  --color-bg: var(--paper);
-  --color-bg-alt: var(--paper);
-  --color-bg-offset: var(--paper-2);
-  --color-fg: var(--ink);
-  --color-fg-bold: var(--ink);
-  --color-fg-light: var(--muted-l);
-  --color-fg-muted: var(--muted-l);
-  --color-text-muted: var(--muted-l);
-  --color-accent: var(--blue);
-  --color-accent-hover: var(--blue-2);
-  --color-border: var(--line);
-  --color-border-alt: var(--line);
-  --font-sans: var(--f-body);
-  --font-heading: var(--f-display);
-  --font-mono: var(--f-mono);
-
   color-scheme: light;
 }
 
@@ -62,6 +44,6 @@ html:not(.js) .dark-zone {
 
 @media (max-width: 759px) {
   :root {
-    --header-h: 120px;
+    --header-h: 128px;
   }
 }

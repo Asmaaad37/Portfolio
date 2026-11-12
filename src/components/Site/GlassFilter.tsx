@@ -6,6 +6,15 @@ interface UADataBrand {
   brand: string;
 }
 
+const LIVE_EVENTS = [
+  'pointermove',
+  'pointerdown',
+  'keydown',
+  'wheel',
+  'touchstart',
+  'scroll',
+] as const;
+
 /**
  * Shared SVG displacement filter for the liquid-glass refraction (M16), plus
  * one delegated listener that moves the specular highlight on any .glass
@@ -43,9 +52,22 @@ export default function GlassFilter() {
     };
     document.addEventListener('pointermove', onMove, { passive: true });
 
+    // Glass over the hero's drifting glows has to re-blur every frame. Until
+    // the visitor interacts, those buttons show the tinted glass without
+    // the blur (behind them there are only soft gradients, so it looks the
+    // same); the first interaction switches the full effect on.
+    const live = () => {
+      html.classList.add('glass-live');
+      for (const type of LIVE_EVENTS) window.removeEventListener(type, live);
+    };
+    for (const type of LIVE_EVENTS) {
+      window.addEventListener(type, live, { passive: true, once: true });
+    }
+
     return () => {
       html.classList.remove('lg-refract');
       document.removeEventListener('pointermove', onMove);
+      for (const type of LIVE_EVENTS) window.removeEventListener(type, live);
     };
   }, []);
 

@@ -36,7 +36,8 @@ export default function Statement({ id, label = 'FIG. 02' }: StatementProps) {
         if (!motion) return;
         gsap.fromTo(
           '.w',
-          { opacity: 0.18 },
+          // 0.62 keeps even the unlit words (incl. blue ones) above 3:1.
+          { opacity: 0.62 },
           {
             opacity: 1,
             stagger: 0.12,

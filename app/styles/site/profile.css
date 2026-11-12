@@ -110,7 +110,7 @@
   transition: background-color 0.2s;
 }
 .resume-index a:hover {
-  background: rgba(255, 255, 255, 0.45);
+  background: color-mix(in srgb, var(--fg) 10%, transparent);
 }
 .resume-index a[aria-current] {
   background: var(--fg);

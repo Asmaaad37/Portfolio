@@ -35,10 +35,11 @@
 }
 .logo {
   justify-self: start;
+  padding: 10px 16px;
+  border-radius: 999px;
   font: 700 20px/1 var(--f-display);
   letter-spacing: -0.03em;
   text-decoration: none;
-  padding: 8px 0;
 }
 .logo i {
   font-style: normal;
@@ -61,7 +62,7 @@
   transition: background-color 0.2s;
 }
 .top-nav a:hover {
-  background: rgba(255, 255, 255, 0.45);
+  background: color-mix(in srgb, var(--fg) 10%, transparent);
 }
 .top-nav a[aria-current='page'] {
   background: var(--fg);
@@ -76,6 +77,12 @@
   font: 12px var(--f-mono);
   font-variant-numeric: tabular-nums;
 }
+.top .clock {
+  padding: 9px 14px;
+  border-radius: 999px;
+  color: var(--fg);
+  white-space: nowrap;
+}
 .avail {
   display: inline-flex;
   align-items: center;
@@ -85,8 +92,8 @@
   color: var(--fg);
   white-space: nowrap;
 }
-.avail::before {
-  content: '';
+.avail-dot {
+  flex: none;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -96,7 +103,7 @@
 
 @media (max-width: 759px) {
   .top-inner {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     grid-template-areas:
       'logo meta'
       'nav nav';
@@ -112,12 +119,21 @@
   .top-meta .clock {
     display: none;
   }
+  /* The nav never pushes the page wider: if the links (or a slower
+     fallback font) don't fit, the pill scrolls sideways instead. */
   .top-nav {
     grid-area: nav;
     justify-self: center;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .top-nav::-webkit-scrollbar {
+    display: none;
   }
   .top-nav a {
-    padding: 10px 12px;
+    flex: none;
+    padding: 10px 11px;
   }
 }
 
