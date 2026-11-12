@@ -441,7 +441,7 @@
 
 /* ---------- numbers (M11) ---------- */
 .numbers {
-  padding-block: 40px 130px;
+  padding-block: 40px 80px;
 }
 .numbers .chip {
   margin-bottom: 36px;
@@ -486,7 +486,7 @@
 
 /* ---------- timeline (M12) ---------- */
 .timeline {
-  padding-block: 130px 90px;
+  padding-block: 88px 90px;
 }
 .tl-head {
   margin-bottom: 56px;
