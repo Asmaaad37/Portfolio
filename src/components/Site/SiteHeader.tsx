@@ -4,9 +4,11 @@ import { navRoutes } from '@/data/routes';
 import { getAllPosts } from '@/lib/posts';
 
 import LocalClock from './LocalClock';
+import MobileMenu from './MobileMenu';
 import NavLinks from './NavLinks';
 
-/** Fixed header: logo, glass nav, local clock and availability badge. */
+/** Fixed header: logo, glass nav, local clock and availability badge.
+ *  Under 760px the nav, clock and badge move into the Menu sheet. */
 export default function SiteHeader() {
   const routes = navRoutes({ hasPosts: getAllPosts().length > 0 });
 
@@ -24,6 +26,7 @@ export default function SiteHeader() {
             Open to roles
           </span>
         </div>
+        <MobileMenu routes={routes} />
       </div>
     </header>
   );
