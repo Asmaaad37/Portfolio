@@ -672,9 +672,79 @@ html.intro-on:not(.intro-done) .wave-box {
 }
 
 /* ---------- small screens ---------- */
+/* Hints that only make sense with a mouse. */
+@media not all and (hover: hover) and (pointer: fine) {
+  .on-fine {
+    display: none;
+  }
+}
+
 @media (max-width: 759px) {
   .hero {
-    padding-block: 150px 30px;
+    padding-block: calc(var(--header-h) + 36px) 24px;
+  }
+  /* The name fills the width on phones, as it does on desktop. */
+  .hero-name {
+    font-size: clamp(68px, 27vw, 140px);
+  }
+  .hero-row {
+    margin-top: 28px;
+  }
+  /* Primary action on its own row; "Get in touch" and GitHub share the next. */
+  .ctas {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    width: 100%;
+  }
+  .ctas > :first-child {
+    grid-column: 1 / -1;
+  }
+  .ctas .btn {
+    width: 100%;
+  }
+  .ctas .btn.icon {
+    width: 56px;
+  }
+  .wave-box {
+    margin-top: 32px;
+  }
+  .wave-read {
+    top: auto;
+    bottom: 10px;
+  }
+  .statement {
+    padding-block: 72px;
+  }
+  .work {
+    padding-block: 64px 48px;
+  }
+  .work-head {
+    margin-bottom: 28px;
+  }
+  /* Cards size to their content instead of a fixed tall box. */
+  .card {
+    min-height: 0;
+    gap: 12px;
+  }
+  .card:not(:has(.metric)) h3,
+  .card.end h3 {
+    margin-top: 24px;
+    font-size: 34px;
+  }
+  .numbers {
+    padding-block: 32px 64px;
+  }
+  .timeline {
+    padding-block: 72px 64px;
+  }
+  .tl ol {
+    gap: 36px;
+  }
+  .contact {
+    padding-block: 72px 96px;
+  }
+  .c-row {
+    margin-top: 40px;
   }
   /* Stack email and Copy so the row never reflows when the mono font lands. */
   .email {

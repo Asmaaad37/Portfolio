@@ -192,6 +192,11 @@
   .pipe {
     flex-direction: column;
   }
+  /* In a column the 140px flex-basis became a height; size to content. */
+  .pipe li {
+    flex: none;
+    padding-block: 14px 16px;
+  }
   .pipe li + li {
     border-left: 0;
     border-top: 1px solid var(--line);

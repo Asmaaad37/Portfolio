@@ -44,6 +44,6 @@ html:not(.js) .dark-zone {
 
 @media (max-width: 759px) {
   :root {
-    --header-h: 128px;
+    --header-h: 72px;
   }
 }

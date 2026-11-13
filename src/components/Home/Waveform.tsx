@@ -157,7 +157,9 @@ export default function Waveform() {
 
   return (
     <div className="wave-box">
-      <Chip>Live signal · move your cursor</Chip>
+      <Chip>
+        Live signal<span className="on-fine"> · move your cursor</span>
+      </Chip>
       <span ref={readRef} className="wave-read" aria-hidden="true">
         amp 0.00 · 0 Hz
       </span>

@@ -101,39 +101,136 @@
   box-shadow: 0 0 0 4px rgba(31, 184, 106, 0.18);
 }
 
+/* ---------- phone header and menu ---------- */
+.menu-btn,
+.menu-sheet {
+  display: none;
+}
+html.menu-open {
+  overflow: hidden;
+}
+
 @media (max-width: 759px) {
   .top-inner {
     grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas:
-      'logo meta'
-      'nav nav';
-    gap: 10px;
+    gap: 12px;
     padding-block: 12px;
   }
-  .logo {
-    grid-area: logo;
-  }
+  .top-nav,
   .top-meta {
-    grid-area: meta;
-  }
-  .top-meta .clock {
     display: none;
   }
-  /* The nav never pushes the page wider: if the links (or a slower
-     fallback font) don't fit, the pill scrolls sideways instead. */
-  .top-nav {
-    grid-area: nav;
-    justify-self: center;
-    max-width: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
+  .menu-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    justify-self: end;
+    height: 44px;
+    padding: 0 16px 0 18px;
+    border-radius: 999px;
+    font: 600 14px/1 var(--f-body);
+    cursor: pointer;
   }
-  .top-nav::-webkit-scrollbar {
+  .menu-icon {
+    position: relative;
+    width: 16px;
+    height: 10px;
+  }
+  .menu-icon::before,
+  .menu-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: currentColor;
+    transition:
+      transform 0.3s var(--ease-out),
+      top 0.3s var(--ease-out);
+  }
+  .menu-icon::before {
+    top: 0;
+  }
+  .menu-icon::after {
+    top: 8.5px;
+  }
+  .menu-btn[aria-expanded='true'] .menu-icon::before,
+  .menu-btn[aria-expanded='true'] .menu-icon::after {
+    top: 4.25px;
+  }
+  .menu-btn[aria-expanded='true'] .menu-icon::before {
+    transform: rotate(45deg);
+  }
+  .menu-btn[aria-expanded='true'] .menu-icon::after {
+    transform: rotate(-45deg);
+  }
+
+  /* Full-screen sheet behind the header bar (the bar keeps the Close button). */
+  .menu-sheet {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: calc(var(--header-h) + 20px) var(--gut-r) max(28px, env(safe-area-inset-bottom, 0px))
+      var(--gut-l);
+    background: var(--bg);
+    color: var(--fg);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .menu-sheet[hidden] {
     display: none;
   }
-  .top-nav a {
-    flex: none;
-    padding: 10px 11px;
+  .menu-sheet[data-open] {
+    animation: sheet-in 0.45s var(--ease-out) both;
+  }
+  .menu-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+  .menu-links a {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font: 800 clamp(40px, 12vw, 56px) / 1 var(--f-display);
+    font-stretch: 80%;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .menu-links a[aria-current='page'] {
+    color: var(--accent);
+  }
+  .menu-foot {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 32px;
+  }
+  .menu-foot .avail {
+    font: 12px var(--f-mono);
+  }
+  .menu-foot .fig {
+    margin: 0;
+    font-size: 12px;
+  }
+}
+@media (max-width: 759px) and (prefers-reduced-motion: reduce) {
+  .menu-sheet[data-open] {
+    animation: none;
+  }
+}
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
   }
 }
 

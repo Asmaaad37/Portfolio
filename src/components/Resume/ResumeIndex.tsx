@@ -27,18 +27,36 @@ export default function ResumeIndex({ sections }: ResumeIndexProps) {
       .filter((el): el is HTMLElement => el !== null);
     if (!targets.length || typeof IntersectionObserver === 'undefined') return;
 
+    // Each callback only reports sections that changed, so keep the full
+    // set of sections inside the reading band and mark the first of them.
+    const inBand = new Set<string>();
+    const order = sections.map((s) => s.id);
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible[0]) setActive(visible[0].target.id);
+        for (const e of entries) {
+          if (e.isIntersecting) inBand.add(e.target.id);
+          else inBand.delete(e.target.id);
+        }
+        const first = order.find((id) => inBand.has(id));
+        if (first) setActive(first);
       },
       { rootMargin: '-30% 0px -60% 0px' },
     );
     for (const el of targets) observer.observe(el);
     return () => observer.disconnect();
   }, [sections]);
+
+  // On phones the index is a sideways-scrolling bar: keep the current
+  // section's link in view.
+  useEffect(() => {
+    const nav = navRef.current;
+    const link = nav?.querySelector<HTMLElement>(`a[href="#${active}"]`);
+    if (!nav || !link || nav.scrollWidth <= nav.clientWidth) return;
+    nav.scrollTo({
+      left: link.offsetLeft - (nav.clientWidth - link.offsetWidth) / 2,
+      behavior: 'smooth',
+    });
+  }, [active]);
 
   const onClick = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
     const section = document.getElementById(id);
